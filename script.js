@@ -2,9 +2,6 @@
   const ALL_USERS_LINK =
     "https://randomuser.me/api/?inc=name,picture,dob,email,phone,location,gender,&results=5000";
 
-  // const ALL_USERS_LINK = "db.json";
-  // const ALL_USERS_LINK = "db50Error.json";
-
   const container = document.querySelector(".container");
   const userContainer = document.querySelector(".user__container");
 
@@ -208,91 +205,6 @@
     return filteredUsersName;
   };
 
-  //   const paginationContainer = document.querySelector(
-  //     ".options-bar__pagination"
-  //   );
-
-  // const arrowLeft = document.querySelector("#paginationLeft");
-  // const arrowRight = document.querySelector("#paginationRight");
-  // arrowLeft.classList.add("options-bar__btn_disabled");
-
-  // const clickHandler = await function (e) {
-  //   if (e.target.closest("#paginationRight")) {
-  //     const numberRemainingUsers = currentUsers.slice(index2).length;
-
-  //     if (numberRemainingUsers < 20 && numberRemainingUsers !== 0) {
-  //       index1 = currentUsers.length - numberRemainingUsers;
-
-  //       if (20 > currentUsers.length) {
-  //         index1 = 0;
-  //       }
-
-  //       index2 = currentUsers.length;
-  //     }
-
-  //     if (index2 < currentUsers.length) {
-  //       index1 += 20;
-  //       index2 += 20;
-  //       arrowLeft.classList.remove("options-bar__btn_disabled");
-  //     }
-
-  //     if (index2 > currentUsers.length) {
-  //       index2 = currentUsers.length;
-  //     }
-  //     if (index2 === currentUsers.length) {
-  //       arrowRight.classList.add("options-bar__btn_disabled");
-  //     }
-
-  //     if (20 >= currentUsers.length) {
-  //       index1 = 0;
-  //       index2 = currentUsers.length;
-  //     }
-
-  //     if (index1 >= 20) {
-  //       arrowLeft.classList.remove("options-bar__btn_disabled");
-  //     }
-
-  //     const users20 = currentUsers.slice(index1, index2);
-
-  //     renderUsers(users20);
-  //     countPages++;
-  //     showPaginationInfo(currentUsers);
-  //   }
-
-  //   if (e.target.closest("#paginationLeft")) {
-  //     if (index2 % index1) {
-  //       index2 -= index2 % index1;
-  //       index1 -= 20;
-  //     } else {
-  //       index2 -= 20;
-  //       index1 -= 20;
-  //     }
-  //     if (index1 <= 0) {
-  //       index1 = 0;
-  //       index2 = 20;
-  //       arrowLeft.classList.add("options-bar__btn_disabled");
-  //     }
-  //     if (20 >= currentUsers.length) {
-  //       index1 = 0;
-  //       index2 = currentUsers.length;
-  //     }
-
-  //     const users20 = currentUsers.slice(index1, index2);
-
-  //     renderUsers(users20);
-
-  //     const numberRemainingUsers = currentUsers.slice(index2).length;
-  //     if (numberRemainingUsers) {
-  //       arrowRight.classList.remove("options-bar__btn_disabled");
-  //     }
-  //     countPages--;
-  //     showPaginationInfo(currentUsers);
-  //   }
-  // };
-  //   paginationContainer.addEventListener("click", clickHandler);
-  // };
-  // paginationHandler();
-
   const sortByAlphabet = (users) => {
     if (sortByAlphabetValue === "reset") {
       return users;
@@ -331,29 +243,6 @@
   maxAge = sortByAge(currentUsers, "up")[currentUsers.length - 1].age;
 
   const rangeHandler = () => {
-    // const controlInputMin = (rangeMin, inputMin, inputMax, controlSlider) => {
-    //   const [from, to] = getParsed(inputMin, inputMax);
-    //   fillSlider(inputMin, inputMax, "#C6C6C6", "#25daa5", controlSlider);
-    //   if (from > to) {
-    //     rangeMin.value = to;
-    //     inputMin.value = to;
-    //   } else {
-    //     rangeMin.value = from;
-    //   }
-    // };
-
-    // const controlInputMax = (rangeMax, inputMin, inputMax, controlSlider) => {
-    //   const [from, to] = getParsed(inputMin, inputMax);
-    //   fillSlider(inputMin, inputMax, "#C6C6C6", "#25daa5", controlSlider);
-    //   setToggleAccessible(inputMax);
-    //   if (from <= to) {
-    //     rangeMax.value = to;
-    //     inputMax.value = to;
-    //   } else {
-    //     inputMax.value = from;
-    //   }
-    // };
-
     const controlRangeMin = (rangeMin, rangeMax, inputMin) => {
       const [from, to] = getParsed(rangeMin, rangeMax);
       fillSlider(rangeMin, rangeMax, "#C6C6C6", "#25daa5", rangeMax);
@@ -420,12 +309,8 @@
     rangeMax.setAttribute("max", maxAge);
     rangeMax.setAttribute("value", maxAge);
 
-    // inputMin.setAttribute("min", minAge);
-    // inputMin.setAttribute("max", maxAge);
     inputMin.setAttribute("value", minAge);
 
-    // inputMax.setAttribute("min", minAge);
-    // inputMax.setAttribute("max", maxAge);
     inputMax.setAttribute("value", maxAge);
 
     fillSlider(rangeMin, rangeMax, "#C6C6C6", "#25daa5", rangeMax);
@@ -447,20 +332,6 @@
       maxAge = rangeMax.value;
       currentUsers = await handlerUsers(allUsers);
     });
-    // inputMin.addEventListener("input", () =>
-    //   controlInputMin(rangeMin, inputMin, inputMax, rangeMax)
-    // );
-    // inputMin.addEventListener("click", async () => {
-    //   minAge = inputMin.value;
-    //   currentUsers = await handlerUsers(allUsers);
-    // });
-    // inputMax.addEventListener("input", () =>
-    //   controlInputMax(rangeMax, inputMin, inputMax, rangeMax)
-    // );
-    // inputMax.addEventListener("click", async () => {
-    //   maxAge = inputMax.value;
-    //   currentUsers = await handlerUsers(allUsers);
-    // });
   };
   rangeHandler();
 
